@@ -1,8 +1,6 @@
-/* Стили для формы */
-form {
-  max-width: 400px;
-  margin: 20px auto;
+body {
   font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
 .form-group {
@@ -20,34 +18,36 @@ input {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 button {
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-button.add-name {
-  background-color: #666;
-  margin-top: 5px;
-  padding: 4px 8px;
-  font-size: 0.9em;
+button:hover {
+  background-color: #0056b3;
 }
 
-/* Стили для цветных блоков Vue.js */
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
 .color-block {
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  display: inline-block;
-  text-align: center;
-  line-height: 100px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
