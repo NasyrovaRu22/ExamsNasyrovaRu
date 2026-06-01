@@ -5,219 +5,155 @@
     <title>Мои задания</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             margin: 20px;
             background: #f0f2f5;
         }
-        
         .block {
             background: white;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        h2 {
-            margin-top: 0;
-            color: #333;
-        }
-        
-        input, textarea, button {
-            margin: 5px 0 10px;
-            padding: 8px;
-        }
-        
-        input, textarea {
-            width: 100%;
-            max-width: 400px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        
         button {
-            background: #007bff;
+            background: blue;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             padding: 8px 15px;
+            border: none;
+            cursor: pointer;
         }
-        
-        button:hover {
-            background: #0056b3;
-        }
-        
-        .name-tag {
-            display: inline-block;
-            background: #007bff;
-            color: white;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 15px;
-            font-size: 14px;
-        }
-        
-        .color-square {
+        .color {
             width: 100px;
             height: 100px;
-            margin: 10px;
             display: inline-block;
-            border-radius: 8px;
+            margin: 10px;
             cursor: pointer;
-            border: 2px solid #ddd;
-        }
-        
-        .result {
-            margin-top: 10px;
-            padding: 10px;
-            background: #e9ecef;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
+
+<!-- ЗАДАНИЕ 1 -->
 <div class="block">
-    <h2>📝 Задание 1. Анкета</h2>
-    
-    <p><strong>Имя (как в статьях):</strong></p>
-    <input type="text" id="nameInput" placeholder="Например: Иванова Анна">
+    <h2>1. Анкета</h2>
+    <p>Имя:</p>
+    <input type="text" id="nameInput" placeholder="Введите имя">
     <button onclick="addName()">+ Добавить имя</button>
     <div id="nameList"></div>
     
-    <p><strong>Место работы:</strong></p>
-    <input type="text" id="work" placeholder="профессор математики, МГУ">
+    <p>Место работы:</p>
+    <input type="text" id="work" placeholder="Место работы">
     
-    <p><strong>Email для подтверждения:</strong></p>
-    <input type="email" id="email" placeholder="ivanova@msu.ru">
+    <p>Email:</p>
+    <input type="email" id="email" placeholder="Email">
     
-    <p><strong>Области интересов:</strong></p>
-    <textarea id="interests" rows="2" placeholder="топология, турбулентность"></textarea>
+    <p>Интересы:</p>
+    <textarea id="interests" rows="2"></textarea>
     
-    <p><strong>Личная страница (необязательно):</strong></p>
-    <input type="text" id="website" placeholder="http://example.com">
+    <p>Сайт:</p>
+    <input type="text" id="website">
     
-    <br>
+    <br><br>
     <button onclick="nextStep()">ДАЛЕЕ</button>
 </div>
+
+<!-- ЗАДАНИЕ 2 -->
 <div class="block">
-    <h2>🔢 Задание 2. Найти блок с максимальной суммой</h2>
-    <p>Введите строку из цифр. Ноль разделяет блоки.</p>
-    <input type="text" id="digits" value="7210245011111111090" style="width: 300px;">
+    <h2>2. Найти блок с максимальной суммой</h2>
+    <input type="text" id="digits" value="7210245011111111090">
     <button onclick="analyzeDigits()">Найти</button>
-    <div id="digitResult" class="result"></div>
+    <p id="digitResult"></p>
 </div>
+
+<!-- ЗАДАНИЕ 3 -->
 <div class="block">
-    <h2>🎨 Задание 3. Цветные квадраты</h2>
-    <p>Кликни на квадрат — цвет изменится.</p>
+    <h2>3. Цветные квадраты</h2>
     <div id="vueApp">
-        <div v-for="(color, idx) in colorList" :key="idx">
-            <div class="color-square" :style="{backgroundColor: color}" @click="changeColor(idx)"></div>
+        <div v-for="(color, i) in colors" :key="i">
+            <div class="color" :style="{backgroundColor: color}" @click="changeColor(i)"></div>
         </div>
     </div>
 </div>
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script>
+    // ЗАДАНИЕ 1
     let names = [];
     
-    // Показать список имён
-    function updateNameDisplay() {
-        let container = document.getElementById('nameList');
-        container.innerHTML = '';
-        for(let i = 0; i < names.length; i++) {
-            let tag = document.createElement('span');
-            tag.className = 'name-tag';
-            tag.innerHTML = names[i];
-            container.appendChild(tag);
-        }
-        if(names.length === 0) {
-            container.innerHTML = '<span style="color:gray;">Нет добавленных имён</span>';
-        }
-    }
-    
-    // Добавить имя
     function addName() {
         let input = document.getElementById('nameInput');
-        let newName = input.value.trim();
-        if(newName !== '') {
-            names.push(newName);
-            updateNameDisplay();
+        let name = input.value.trim();
+        if (name) {
+            names.push(name);
+            let container = document.getElementById('nameList');
+            container.innerHTML = '';
+            for (let i = 0; i < names.length; i++) {
+                let tag = document.createElement('span');
+                tag.innerHTML = names[i] + ' ';
+                tag.style.background = 'blue';
+                tag.style.color = 'white';
+                tag.style.padding = '5px 10px';
+                tag.style.margin = '5px';
+                tag.style.display = 'inline-block';
+                tag.style.borderRadius = '15px';
+                container.appendChild(tag);
+            }
             input.value = '';
         }
     }
     
     function nextStep() {
-        alert("Форма заполнена. Спасибо!");
+        alert('Данные сохранены!');
     }
     
+    // ЗАДАНИЕ 2
     function findMaxBlock(str) {
-        // Разделяем по нулям
         let blocks = str.split('0');
         let bestBlock = '';
         let bestSum = -1;
         
-        for(let i = 0; i < blocks.length; i++) {
+        for (let i = 0; i < blocks.length; i++) {
             let block = blocks[i];
-            if(block.length === 0) continue; // пустой блок пропускаем
-            
-            // Считаем сумму цифр в блоке
+            if (block.length === 0) continue;
             let sum = 0;
-            for(let j = 0; j < block.length; j++) {
+            for (let j = 0; j < block.length; j++) {
                 sum += parseInt(block[j]);
             }
-            
-            if(sum > bestSum) {
+            if (sum > bestSum) {
                 bestSum = sum;
                 bestBlock = block;
             }
         }
-        
         return {block: bestBlock, sum: bestSum};
     }
     
     function analyzeDigits() {
         let input = document.getElementById('digits').value;
-        // Проверка: только цифры
-        for(let i = 0; i < input.length; i++) {
-            if(input[i] < '0' || input[i] > '9') {
-                document.getElementById('digitResult').innerHTML = 'Ошибка: можно вводить только цифры 0-9';
-                return;
-            }
-        }
-        
         let result = findMaxBlock(input);
-        if(result.block === '') {
-            document.getElementById('digitResult').innerHTML = 'Нет блоков (нет цифр между нулями)';
+        if (result.block === '') {
+            document.getElementById('digitResult').innerHTML = 'Нет блоков';
         } else {
-            document.getElementById('digitResult').innerHTML = 'Блок с максимальной суммой: <strong>' + result.block + '</strong><br>Сумма: <strong>' + result.sum + '</strong>';
+            document.getElementById('digitResult').innerHTML = 'Блок: ' + result.block + '<br>Сумма: ' + result.sum;
         }
     }
     
-    // ================= ЗАДАНИЕ 3 (Vue) =================
+    // ЗАДАНИЕ 3
     const app = Vue.createApp({
         data() {
             return {
-                colorList: ['red', 'green', 'blue', 'yellow', 'purple']
+                colors: ['red', 'green', 'blue', 'yellow', 'purple']
             }
         },
         methods: {
-            changeColor(index) {
-                // Генерируем случайный цвет в формате rgb
-                let r = Math.floor(Math.random() * 256);
-                let g = Math.floor(Math.random() * 256);
-                let b = Math.floor(Math.random() * 256);
-                this.colorList[index] = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+            changeColor(i) {
+                let r = Math.floor(Math.random() * 255);
+                let g = Math.floor(Math.random() * 255);
+                let b = Math.floor(Math.random() * 255);
+                this.colors[i] = 'rgb(' + r + ',' + g + ',' + b + ')';
             }
         }
     });
     app.mount('#vueApp');
-    
-
-    window.onload = function() {
-        updateNameDisplay();
-        analyzeDigits();
-    };
 </script>
 
 </body>
