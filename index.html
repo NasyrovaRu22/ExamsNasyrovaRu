@@ -73,7 +73,6 @@
 </head>
 <body>
 
-<!-- ЗАДАНИЕ 1 -->
 <div class="block">
     <h2>Задание 1. Анкета</h2>
     
@@ -98,7 +97,6 @@
     <button onclick="showForm()">ДАЛЕЕ</button>
 </div>
 
-<!-- ЗАДАНИЕ 2 -->
 <div class="block">
     <h2>Задание 2. Найти блок с максимальной суммой</h2>
     <p>Введите цифры (0 разделяет блоки):</p>
@@ -107,7 +105,6 @@
     <div id="resultBlock" class="result"></div>
 </div>
 
-<!-- ЗАДАНИЕ 3 -->
 <div class="block">
     <h2>Задание 3. Цветные квадраты</h2>
     <p>Кликни на квадрат — цвет изменится</p>
@@ -120,7 +117,7 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script>
-    // ===== ЗАДАНИЕ 1 =====
+   
     let nameList = [];
     
     function showNames() {
@@ -147,19 +144,11 @@
         }
     }
     
-    function showForm() {
-        let work = document.getElementById('work').value;
-        let email = document.getElementById('email').value;
-        let interests = document.getElementById('interests').value;
-        let site = document.getElementById('website').value;
-        alert('Имена: ' + (nameList.length ? nameList.join(', ') : 'нет') + 
-              '\nМесто работы: ' + (work || 'нет') +
-              '\nEmail: ' + (email || 'нет') +
-              '\nИнтересы: ' + (interests || 'нет') +
-              '\nСайт: ' + (site || 'нет'));
+  function showForm() {
+        alert('Спасибо, данные сохранены');
     }
     
-    // ===== ЗАДАНИЕ 2 =====
+
     function getMaxBlock(str) {
         let parts = str.split('0');
         let best = '';
@@ -194,7 +183,7 @@
         }
     }
     
-    // ===== ЗАДАНИЕ 3 =====
+
     const app = Vue.createApp({
         data() {
             return {
