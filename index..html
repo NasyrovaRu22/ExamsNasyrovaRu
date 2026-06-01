@@ -77,8 +77,6 @@
     </style>
 </head>
 <body>
-
-<!-- ЗАДАНИЕ 1: ФОРМА -->
 <div class="block">
     <h2>📝 Задание 1. Анкета</h2>
     
@@ -102,8 +100,6 @@
     <br>
     <button onclick="nextStep()">ДАЛЕЕ</button>
 </div>
-
-<!-- ЗАДАНИЕ 2: АНАЛИЗ ЦИФР -->
 <div class="block">
     <h2>🔢 Задание 2. Найти блок с максимальной суммой</h2>
     <p>Введите строку из цифр. Ноль разделяет блоки.</p>
@@ -111,8 +107,6 @@
     <button onclick="analyzeDigits()">Найти</button>
     <div id="digitResult" class="result"></div>
 </div>
-
-<!-- ЗАДАНИЕ 3: ЦВЕТНЫЕ КВАДРАТЫ (Vue) -->
 <div class="block">
     <h2>🎨 Задание 3. Цветные квадраты</h2>
     <p>Кликни на квадрат — цвет изменится.</p>
@@ -125,7 +119,6 @@
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script>
-    // ================= ЗАДАНИЕ 1 =================
     let names = [];
     
     // Показать список имён
@@ -154,12 +147,10 @@
         }
     }
     
-    // Кнопка "ДАЛЕЕ" — просто очищает поля или показывает сообщение
     function nextStep() {
         alert("Форма заполнена. Спасибо!");
     }
     
-    // ================= ЗАДАНИЕ 2 =================
     function findMaxBlock(str) {
         // Разделяем по нулям
         let blocks = str.split('0');
@@ -222,7 +213,7 @@
     });
     app.mount('#vueApp');
     
-    // Инициализация: покажем пример для задания 2 при загрузке
+
     window.onload = function() {
         updateNameDisplay();
         analyzeDigits();
