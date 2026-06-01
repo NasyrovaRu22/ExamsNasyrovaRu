@@ -63,7 +63,6 @@
 </head>
 <body>
 
-<!-- ЗАДАНИЕ 1 -->
 <div class="block">
     <h2> Задание 1. Анкета</h2>
     
@@ -88,7 +87,6 @@
     <button onclick="nextStep()">ДАЛЕЕ</button>
 </div>
 
-<!-- ЗАДАНИЕ 2 -->
 <div class="block">
     <h2> Задание 2. Найти блок с максимальной суммой</h2>
     <p>Введите строку из цифр. Ноль разделяет блоки.</p>
@@ -97,7 +95,7 @@
     <div id="digitResult" class="result"></div>
 </div>
 
-<!-- ЗАДАНИЕ 3 -->
+
 <div class="block">
     <h2> Задание 3. Цветные квадраты</h2>
     <p>Кликни на квадрат — цвет изменится.</p>
@@ -141,7 +139,7 @@
         alert("Спасибо! Форма заполнена.");
     }
     
-    // ЗАДАНИЕ 2
+    // Задание 2
     function findMaxBlock(str) {
         let blocks = str.split('0');
         let bestBlock = '';
@@ -175,7 +173,7 @@
         }
     }
     
-    // ЗАДАНИЕ 3
+    // Задание 3
     const app = Vue.createApp({
         data() {
             return {
